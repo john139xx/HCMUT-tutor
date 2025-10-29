@@ -67,7 +67,7 @@ const Footer = () => {
 
         {/* Copyright Message */}
         <p className="text-xs sm:text-sm">
-          &copy; 2024 R/Pathagama Maha Vidyalaya. All Rights Reserved.
+          &copy; Buddy-study
         </p>
       </div>
     </footer>

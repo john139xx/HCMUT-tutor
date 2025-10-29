@@ -1,39 +1,42 @@
-import 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Gallery from './pages/Gallery';
-import News from './pages/News';
-import Academic from './pages/Academic';
-import Header from './components/Header';
-import ContactUs from './pages/ContactUs';
-import Footer from './components/footer';
-import EventDetailsPage from './pages/EventDetailsPage';
+import React from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer"; // nếu bạn có Footer
+import Home from "./pages/Home";          // Trang giới thiệu (About Section)
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import HomePage from "./pages/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
+import MentorRegister from "./pages/MentorRegister";
+function App() {
+  const location = useLocation(); // ✅ Lấy đường dẫn hiện tại
 
+  // ✅ Chỉ hiển thị Header và Footer nếu đang ở trang giới thiệu "/"
+  const showHeaderFooter = location.pathname === "/";
 
-const App = () => {
   return (
-    <Router>
+    <>
+      {showHeaderFooter && <Header />}
 
-      {/*header */}
-      <Header />
-
-      {/* Routes for Different Pages */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/event/:eventId" element={<EventDetailsPage />} />
-        <Route path="/notice" element={<News />} />
-        <Route path="/academic" element={<Academic />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
 
-      {/* Footer */}
-      <Footer />
-    </Router>
+      {showHeaderFooter && <Footer />}
+    </>
   );
 }
 
 export default App;
-

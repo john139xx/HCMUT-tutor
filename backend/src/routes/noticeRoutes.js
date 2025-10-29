@@ -1,3 +1,4 @@
+// routes/noticeRoutes.js
 const express = require("express");
 const noticeController = require("../controllers/noticeController");
 

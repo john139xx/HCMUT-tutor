@@ -59,7 +59,7 @@ const Academic = () => {
                   <h3 className="text-lg font-semibold text-red-custom mb-2">
                     Sectional Head:
                   </h3>
-                  <p className="text-gray-700 text-lg">{data.sectionalHead}</p>
+                  <p className="text-blue-500 text-lg">{data.sectionalHead}</p>
                 </div>
 
                 <div className="border-t pt-6">

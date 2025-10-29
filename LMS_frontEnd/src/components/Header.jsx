@@ -1,189 +1,42 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { IoMdClose } from "react-icons/io";
-import School_logo from "../assets/SchoolLogos/School_white_logo.png";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const navigate = useNavigate();
 
   return (
-     <>
-      <header className="bg-red-custom text-white py-4 fixed w-full top-0 left-0 z-50 font-inter">
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <div className="flex items-center">
-            <img src={School_logo} alt="Logo" className="h-10 mr-6" />
-            <h1 className="text-lg font-bold hidden sm:block">
-              R/Pathagama Maha Vidyalaya
-            </h1>
-          </div>
+    <header className="bg-white shadow-sm py-4 px-8 flex justify-between items-center border-b">
+      {/* Logo */}
+      <div
+        onClick={() => navigate("/")}
+        className="flex items-center gap-2 cursor-pointer select-none"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/9/97/Logo_Bach_Khoa_HCMUT.svg"
+          alt="Logo"
+          className="w-10 h-10 bg-white rounded-full"
+        />
+        <span className="text-xl font-bold text-blue-700 tracking-wide">
+          TUTOR
+        </span>
+      </div>
 
-          {/* Navigation */}
-          <nav className="flex items-center">
-            {/* Desktop Menu */}
-            <ul className="hidden sm:flex space-x-6">
-              <li>
-                <Link
-                  to="/"
-                  className="rounded transition hover:text-yellow-custom"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/academic"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Academics
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/lms"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  LMS
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/notice"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Notice
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gallery"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="rounded transition hover:text-yellow-custom "
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-
-            {/* Mobile Menu Button */}
-            <div className="sm:hidden relative z-20">
-              <label
-                className="cursor-pointer text-white text-3xl"
-                onClick={toggleMenu}
-              >
-                {isMenuOpen ? "" : "☰"}
-              </label>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <main>
-        {/* Mobile Dropdown Menu */}
-        <div
-          className={`sm:hidden fixed inset-0 bg-red-custom bg-opacity-95 z-50 flex items-center justify-center transition-transform duration-300 ease-in-out ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+      {/* Nút Đăng nhập & Đăng ký */}
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => navigate("/login")}
+          className="px-4 py-2 text-blue-700 border border-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition"
         >
-          {/* Close button */}
-          <div className="absolute top-8 right-8">
-            <button
-              onClick={toggleMenu}
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-custom text-2xl shadow-lg focus:outline-none hover:bg-yellow-custom"
-            >
-              <IoMdClose />
-            </button>
-          </div>
-
-          {/* Menu Container */}
-          <div className="relative text-white rounded-lg p-6 w-full max-w-sm h-screen flex flex-col justify-center items-center">
-            <ul className="flex flex-col items-center space-y-8 text-lg">
-              <li>
-                <Link
-                  to="/"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/academics"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Academics
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/lms"
-                  className=" hover:text-yellow-custom "
-                >
-                  LMS
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/notice"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Notice
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/gallery"
-                  className="hover:text-yellow-custom"
-                  onClick={toggleMenu}
-                >
-                  Gallery
-                </Link>
-              </li>
-            </ul>
-            <div className="absolute bottom-8">
-              <Link
-                to="/contact"
-                className="hover:text-yellow-custom text-lg"
-                onClick={toggleMenu}
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
-
-        </div>
-      </main>
-    </>
+          Đăng nhập
+        </button>
+        <button
+          onClick={() => navigate("/register")}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+        >
+          Đăng ký
+        </button>
+      </div>
+    </header>
   );
 };
 

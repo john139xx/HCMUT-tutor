@@ -1,18 +1,14 @@
 // models/Event.js
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db');
 
-const ImageSchema = new mongoose.Schema({
-  url: { type: String, required: true },
-  public_id: { type: String, required: true }
+const Event = sequelize.define('Event', {
+  name:   { type: DataTypes.STRING, allowNull: false },
+  date:   { type: DataTypes.DATE,   allowNull: false },
+  images: { type: DataTypes.JSON,   allowNull: true, defaultValue: [] } // [{url, public_id}]
+}, {
+  tableName: 'events',
+  timestamps: true,
 });
 
-const eventSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    date: { type: Date, required: true },
-    images: [ImageSchema]
-  },
-  { timestamps: true }
-);
-
-module.exports = mongoose.model('Event', eventSchema);
+module.exports = Event;

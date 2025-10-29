@@ -1,10 +1,15 @@
-const mongoose = require("mongoose");
+// models/Notice.js
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/db');
 
-const noticeSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  postedDate: { type: Date, default: Date.now },
-  deadline: { type: Date, required: true },
-  pdfLink: { type: String, required: true }, // Google Drive PDF link
+const Notice = sequelize.define('Notice', {
+  title:      { type: DataTypes.STRING, allowNull: false },
+  postedDate: { type: DataTypes.DATE,   allowNull: false, defaultValue: DataTypes.NOW },
+  deadline:   { type: DataTypes.DATE,   allowNull: false },
+  pdfLink:    { type: DataTypes.STRING, allowNull: false },
+}, {
+  tableName: 'notices',
+  timestamps: true,
 });
 
-module.exports = mongoose.model("Notice", noticeSchema);
+module.exports = Notice;

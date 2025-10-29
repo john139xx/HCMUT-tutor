@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { MdSchool, MdGroups, MdLibraryBooks, MdHistory } from 'react-icons/md';
-import image from "../assets/hImg2.png";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { MdPeopleAlt, MdChat, MdSchool, MdLightbulb } from "react-icons/md";
+import bgImage from "../assets/hImg2.png";
 
 const SchAbout = () => {
   useEffect(() => {
@@ -10,41 +10,41 @@ const SchAbout = () => {
 
   const features = [
     {
+      icon: <MdPeopleAlt />,
+      title: "Cộng đồng học tập",
+      description: "Kết nối hàng trăm người học cùng nhau tiến bộ mỗi ngày.",
+      image: bgImage,
+    },
+    {
+      icon: <MdChat />,
+      title: "Trao đổi & hỗ trợ",
+      description: "Thảo luận, chia sẻ kinh nghiệm, giải đáp thắc mắc cùng bạn học.",
+      image: bgImage,
+    },
+    {
       icon: <MdSchool />,
-      title: "130+ Years",
-      description: "Of academic excellence and tradition",
-      image: image
+      title: "Đa dạng chủ đề",
+      description: "Từ ngoại ngữ, công nghệ đến kỹ năng mềm – học gì bạn cần.",
+      image: bgImage,
     },
     {
-      icon: <MdGroups />,
-      title: "600+ Students",
-      description: "Nurturing young minds every year",
-      image: image
+      icon: <MdLightbulb />,
+      title: "Học vui – hiệu quả",
+      description: "Không chỉ học, mà còn là hành trình truyền cảm hứng và phát triển bản thân.",
+      image: bgImage,
     },
-    {
-      icon: <MdLibraryBooks />,
-      title: "30+ Faculty",
-      description: "Dedicated and experienced staff",
-      image: image
-    },
-    {
-      icon: <MdHistory />,
-      title: "Modern Curriculum",
-      description: "Balancing tradition and innovation",
-      image: image
-    }
   ];
 
   return (
-    <div className="relative overflow-hidden bg-gray-50 py-20">
-      {/* Background Image with Gradient Overlay */}
+    <div className="relative overflow-hidden bg-gradient-to-b from-white to-blue-50 py-20">
+      {/* Background Image with Light Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={image}
-          alt="School Campus"
+          src={bgImage}
+          alt="Buddy Study Background"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-red-900/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-200/70 to-blue-100/50"></div>
       </div>
 
       {/* Content Container */}
@@ -60,27 +60,25 @@ const SchAbout = () => {
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-blue-800 mb-4"
           >
-            About 
+            Về Buddy Study
           </motion.h2>
 
-          {/* Divider Line */}
-        <motion.div
-          className="w-16 h-1 bg-yellow-500 mb-8 mx-auto item-center"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        ></motion.div>
+          <motion.div
+            className="w-20 h-1 bg-blue-400 mb-8 mx-auto"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          ></motion.div>
 
-        
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-white/80 max-w-2xl mx-auto"
+            transition={{ delay: 0.3 }}
+            className="text-lg text-blue-700/90 max-w-2xl mx-auto leading-relaxed"
           >
-            Established in 1891, we have been shaping futures with a perfect blend of tradition and innovation.
+            Buddy Study là nơi mọi người cùng nhau học tập, chia sẻ kiến thức và tạo động lực cho nhau trên hành trình phát triển bản thân.
           </motion.p>
         </div>
 
@@ -89,43 +87,39 @@ const SchAbout = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+              className="relative group overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all bg-white/80 border border-blue-100 backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
             >
-              {/* Background Image */}
+              {/* Background Image with light tint */}
               <div className="absolute inset-0">
                 <img
                   src={feature.image}
                   alt="Background"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover opacity-20"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
               </div>
 
               {/* Content */}
-              <div className="relative z-10 p-8 h-full flex flex-col justify-end text-white">
-                <div className="text-4xl mb-4">{feature.icon}</div>
+              <div className="relative z-10 p-8 h-full flex flex-col justify-end text-blue-900">
+                <div className="text-4xl mb-4 text-blue-500">{feature.icon}</div>
                 <h3 className="text-2xl font-bold mb-2">{feature.title}</h3>
-                <p className="text-lg">{feature.description}</p>
+                <p className="text-base text-blue-800/90">{feature.description}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Additional Content */}
+        {/* Closing Text */}
         <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-        
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            To provide a nurturing environment that fosters academic excellence, 
-            personal growth, and social responsibility, preparing students to 
-            thrive in a rapidly changing world.
+          <p className="text-lg text-blue-700/90 max-w-3xl mx-auto leading-relaxed">
+            Chúng tôi tin rằng khi học cùng nhau, mỗi người sẽ mạnh mẽ hơn, tự tin hơn và đạt được nhiều thành công hơn – không chỉ trong học tập, mà cả trong cuộc sống.
           </p>
         </motion.div>
       </motion.div>
