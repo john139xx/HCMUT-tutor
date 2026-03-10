@@ -1,4 +1,4 @@
-# R/Pathagama Maha Vidyalaya Website
+# R/Tutor website ref
 
 ## Project Overview
 This is the official website for **R/Pathagama Maha Vidyalaya**, built using **React.js**. The website provides information about the school, its history, academic programs, events, and contact details. The goal of this project is to offer an intuitive and responsive web experience for students, teachers, and parents.
